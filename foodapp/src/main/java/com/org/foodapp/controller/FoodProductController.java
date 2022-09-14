@@ -19,7 +19,7 @@ public class FoodProductController {
 	
 	@PostMapping("/foodproduct")
 	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(@RequestBody FoodProduct foodProduct){
-		return foodProductService.savefFoodProduct(foodProduct, 2);
+		return foodProductService.savefFoodProduct(foodProduct, 1);
 	}
 
 }
