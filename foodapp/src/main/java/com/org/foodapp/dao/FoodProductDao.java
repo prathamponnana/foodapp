@@ -12,11 +12,16 @@ import com.org.foodapp.repository.FoodProductRepository;
 public class FoodProductDao {
 	
 	@Autowired
-	FoodProductRepository foodProductRepository;
+	FoodProductRepository foodProductRepo;
 	
 	
 	public FoodProduct saveFoodProduct(FoodProduct foodProduct) {
-		return foodProductRepository.save(foodProduct);
+		return foodProductRepo.save(foodProduct);
+	}
+	
+	public Optional<FoodProduct> getFoodProductById(int id){
+		return foodProductRepo.findById(id);
+		
 	}
 
 }

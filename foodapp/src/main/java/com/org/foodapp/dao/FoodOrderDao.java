@@ -17,5 +17,9 @@ public class FoodOrderDao {
 	public FoodOrder saveFoodOrder(FoodOrder foodOrder) {
 		return foodOrderRepository.save(foodOrder);
 	}
+	
+	public Optional<FoodOrder> getFoodOrderById(int id){
+		return foodOrderRepository.findById(id);
+	}
 
 }
