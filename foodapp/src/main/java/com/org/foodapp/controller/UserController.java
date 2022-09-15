@@ -2,6 +2,7 @@ package com.org.foodapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,11 @@ public class UserController {
 	@PostMapping("/user")
 	public ResponseEntity<ResponseStructure<User>> saveUser(@RequestBody User user){
 		return userService.saveUser(user);
+	}
+	
+	@GetMapping("/staff")
+	public ResponseEntity<ResponseStructure<User>> getUserByRole(@RequestBody User user){
+		return userService.getUserByRole(user.getRole());
 	}
 
 }

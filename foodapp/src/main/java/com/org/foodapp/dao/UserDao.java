@@ -22,5 +22,9 @@ public class UserDao {
 		return userRepo.findById(id);
 	}
 	
+	public User getUserByRole(String role) {
+		return userRepo.getUserByRole(role);
+	}
+	
 
 }

@@ -40,5 +40,24 @@ public class UserService {
 		
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
+	
+	
+	public ResponseEntity<ResponseStructure<User>> getUserByRole(String role){
+		ResponseStructure<User> structure = new ResponseStructure<>();
+		User user = userDao.getUserByRole(role);
+		if(user != null) {
+			structure.setError(false);
+			structure.setMessage("Staff Found");
+			structure.setData(user);
+		}
+		else {
+			structure.setError(true);
+			structure.setMessage("Staff Not Found");
+			structure.setData(user);
+		}
+		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+	}
+	
+	
 
 }

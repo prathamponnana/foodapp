@@ -1,6 +1,8 @@
 package com.org.foodapp.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,11 +20,11 @@ public class Item {
 	private int productId;
 	private String name;
 	private String type;
-	private int quanity;
+	private int quantity;
 	private double price;
 	
 	@JsonBackReference
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	FoodOrder foodOrder;
 	
@@ -51,11 +53,11 @@ public class Item {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getQuanity() {
-		return quanity;
+	public int getQuantity() {
+		return quantity;
 	}
-	public void setQuanity(int quanity) {
-		this.quanity = quanity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	public double getPrice() {
 		return price;

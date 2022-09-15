@@ -18,6 +18,6 @@ public class MenuController {
 	
 	@PostMapping("/menu")
 	public ResponseEntity<ResponseStructure<Menu>> saveMenu(@RequestBody Menu menu){
-		return menuService.saveMenu(menu, 1);
+		return menuService.saveMenu(menu, 2);
 	}
 }
