@@ -27,4 +27,8 @@ public class UserController {
 		return userService.getUserByRole(user.getRole());
 	}
 
+	@GetMapping("/login")
+	public ResponseEntity<ResponseStructure<User>> login(@RequestBody User user) {
+		return userService.login(user.getName() , user.getPassword());
+	}
 }

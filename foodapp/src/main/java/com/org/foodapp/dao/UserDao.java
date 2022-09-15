@@ -25,6 +25,8 @@ public class UserDao {
 	public User getUserByRole(String role) {
 		return userRepo.getUserByRole(role);
 	}
-	
 
+	public User login(String name, String password) {
+		return userRepo.login(name, password);
+	}
 }
