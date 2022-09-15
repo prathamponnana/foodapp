@@ -40,21 +40,54 @@ public class UserService {
 		
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
-	public ResponseEntity<ResponseStructure<User>> login(String name, String password){
+
+	
+	
+	public ResponseEntity<ResponseStructure<User>> getUserByRole(String role){
 		ResponseStructure<User> structure = new ResponseStructure<>();
-		User user = userDao.login(name, password);
-		if(user!=null) {
+		User user = userDao.getUserByRole(role);
+		if(user != null) {
 			structure.setError(false);
-			structure.setMessage("Login Successful");
+			structure.setMessage("Staff Found");
 			structure.setData(user);
-		}else {
+		}
+		else {
 			structure.setError(true);
-			structure.setMessage("Invalid credentials");
+			structure.setMessage("Staff Not Found");
 			structure.setData(user);
 		}
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
 	
+//	public ResponseEntity<ResponseStructure<User>> login(String name, String password){
+//		ResponseStructure<User> structure = new ResponseStructure<>();
+//		User user = userDao.login(name, password);
+//		if(user != null) {
+//			structure.setError(false);
+//			structure.setMessage("Login Successful");
+//			structure.setData(user);
+//		}
+//		else {
+//			structure.setError(true);
+//			structure.setMessage("Login Failed");
+//		}
+//	}
+//	public ResponseEntity<ResponseStructure<User>> login(String name, String password){
+//		ResponseStructure<User> structure = new ResponseStructure<>();
+//		User user = userDao.login(name, password);
+//		if(user!=null) {
+//			structure.setError(false);
+//			structure.setMessage("Login Successful");
+//			structure.setData(user);
+//		}else {
+//			structure.setError(true);
+//			structure.setMessage("Invalid credentials");
+//
+//			structure.setData(user);
+//		}
+//		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+//	}
+
 	public ResponseEntity<ResponseStructure<User>> updateUser(User user){
 		ResponseStructure<User> structure = new ResponseStructure<>();
 			structure.setError(false);
@@ -76,6 +109,7 @@ public class UserService {
 		}
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
 	}
+
 	
 
 }

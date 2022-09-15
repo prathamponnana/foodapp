@@ -32,5 +32,11 @@ public class UserDao {
 		 userRepo.delete(user);
 	}
 	
+	public User getUserByRole(String role) {
+		return userRepo.getUserByRole(role);
+	}
 
+//	public User login(String name, String password) {
+//		return userRepo.login(name, password);
+//	}
 }

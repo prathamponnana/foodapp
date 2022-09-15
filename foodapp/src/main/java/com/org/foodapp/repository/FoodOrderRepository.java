@@ -6,6 +6,5 @@ import com.org.foodapp.dto.FoodOrder;
 
 public interface FoodOrderRepository extends JpaRepository<FoodOrder, Integer>{
 	
-	
 
 }

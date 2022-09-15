@@ -2,6 +2,7 @@ package com.org.foodapp.dto;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,12 +22,11 @@ public class FoodProduct {
 	private String type;
 	private boolean availability;
 	private double price;
+	
 	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	Menu menu;
-	
-	
 	
 	public int getId() {
 		return id;
