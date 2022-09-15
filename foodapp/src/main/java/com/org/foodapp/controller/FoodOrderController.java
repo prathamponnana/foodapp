@@ -40,6 +40,7 @@ public class FoodOrderController {
 	@DeleteMapping("/foodorder/{id}")
 	public ResponseEntity<ResponseStructure<String>> deleteFoodOrderById(@PathVariable int id) {
 		return foodOrderService.deleteFoodOrderById(id);
+
 	}
 
 }

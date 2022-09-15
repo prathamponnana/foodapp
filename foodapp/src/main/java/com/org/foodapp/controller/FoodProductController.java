@@ -2,6 +2,10 @@ package com.org.foodapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +22,11 @@ public class FoodProductController {
 	
 	@PostMapping("/foodproduct")
 	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(@RequestBody FoodProduct foodProduct){
-		return foodProductService.savefFoodProduct(foodProduct, 1);
+		return foodProductService.savefFoodProduct(foodProduct, 2);
 	}
+	@DeleteMapping("/foodproduct/{foodProdId}")
+	public ResponseEntity<ResponseStructure<String>> deleteProduct(@PathVariable int foodProdId){
+		return foodProductService.deleteFoodProduct(foodProdId);
+	}	
 
 }
