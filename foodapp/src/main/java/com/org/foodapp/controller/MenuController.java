@@ -2,6 +2,8 @@ package com.org.foodapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,11 @@ public class MenuController {
 	
 	@PostMapping("/menu")
 	public ResponseEntity<ResponseStructure<Menu>> saveMenu(@RequestBody Menu menu){
-		return menuService.saveMenu(menu, 1);
+		return menuService.saveMenu(menu, 2);
 	}
+	@DeleteMapping("/menu/{menuId}")
+	public ResponseEntity<ResponseStructure<String>> deleteUser(@PathVariable int menuId){
+		return menuService.deleteMenu(menuId);
+	}
+
 }

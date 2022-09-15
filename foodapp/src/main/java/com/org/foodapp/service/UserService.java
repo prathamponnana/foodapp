@@ -40,5 +40,42 @@ public class UserService {
 		
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
+	public ResponseEntity<ResponseStructure<User>> login(String name, String password){
+		ResponseStructure<User> structure = new ResponseStructure<>();
+		User user = userDao.login(name, password);
+		if(user!=null) {
+			structure.setError(false);
+			structure.setMessage("Login Successful");
+			structure.setData(user);
+		}else {
+			structure.setError(true);
+			structure.setMessage("Invalid credentials");
+			structure.setData(user);
+		}
+		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructure<User>> updateUser(User user){
+		ResponseStructure<User> structure = new ResponseStructure<>();
+			structure.setError(false);
+			structure.setMessage("Updated Successfully");
+			structure.setData(userDao.saveUser(user));
+		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructure<String>> deleteUser(int id){
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		Optional<User> optional = userDao.getUserById(id);
+		if(optional.isEmpty()) {
+			structure.setError(true);
+			structure.setMessage("No user with that id");
+		}else {
+			structure.setError(false);
+			structure.setMessage("User Deleted");
+			userDao.deleteUser(optional.get());
+		}
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
+	}
+	
 
 }
