@@ -7,5 +7,4 @@ import com.org.foodapp.dto.Item;
 public interface ItemRepository extends JpaRepository<Item, Integer>{
 	
 	
-
 }

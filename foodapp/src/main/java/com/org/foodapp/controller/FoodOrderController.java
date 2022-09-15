@@ -18,7 +18,7 @@ public class FoodOrderController {
 	
 	@PostMapping("/foodorder")
 	public ResponseEntity<ResponseStructure<FoodOrder>> saveFoodOrder(@RequestBody FoodOrder foodOrder){
-		return foodOrderService.saveFoodOrder(foodOrder, 1);
+		return foodOrderService.saveFoodOrder(foodOrder, 2);
 	}
 
 }

@@ -21,7 +21,10 @@ public class FoodProductDao {
 	
 	public Optional<FoodProduct> getFoodProductById(int id){
 		return foodProductRepo.findById(id);
-		
+	}
+	
+	public void deleteFoodProduct(int id) {
+		foodProductRepo.deleteById(id);
 	}
 
 }
