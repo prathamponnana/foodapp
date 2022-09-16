@@ -18,12 +18,12 @@ public class MenuDao {
 	public Menu saveMenu(Menu menu) {
 		return menuRepository.save(menu);
 	}
-	public Optional getMenuById(int id) {
+	public Optional<Menu> getMenuById(int id) {
 		return menuRepository.findById(id);
 	}
 	
-	public void deleteMenu(Menu menu) {
-		 menuRepository.delete(menu);
+	public void deleteMenu(int menuId) {
+		 menuRepository.deleteById(menuId);
 	}
 
 }

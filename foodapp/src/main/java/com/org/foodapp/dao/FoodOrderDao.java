@@ -1,5 +1,6 @@
 package com.org.foodapp.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,17 @@ public class FoodOrderDao {
 	
 	public Optional<FoodOrder> getFoodOrderById(int id){
 		return foodOrderRepository.findById(id);
+	}
+	public List<FoodOrder> getFoodOrder() {
+		return foodOrderRepository.findAll();
+	}
+	
+	public FoodOrder updateFoodOrder(FoodOrder foodOrder) {
+		return foodOrderRepository.save(foodOrder);
+	}
+	
+	public void deleteFoodOrderById(int id) {
+		foodOrderRepository.deleteById(id);
 	}
 
 }

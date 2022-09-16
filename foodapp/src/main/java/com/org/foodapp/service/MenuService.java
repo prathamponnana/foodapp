@@ -28,7 +28,6 @@ public class MenuService {
 
 		Menu menu1 = optional.get().getMenu();
 		if(optional.isEmpty() ) {
-//			System.out.println("Not allowed");
 			structure.setError(true);
 			structure.setMessage("No id found");
 		}else if (menu1!=null) {
@@ -46,15 +45,15 @@ public class MenuService {
 	
 	public ResponseEntity<ResponseStructure<String>> deleteMenu(int id){
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		Optional<User> optional = menuDao.getMenuById(id);
+		Optional<Menu> optional = menuDao.getMenuById(id);
 		if(optional.isEmpty()) {
 			structure.setError(true);
 			structure.setMessage("No menu with that id");
 		}else {
 			structure.setError(false);
 			structure.setMessage("Menu Deleted");
-			userDao.deleteUser(optional.get());
-		}
+			menuDao.deleteMenu(id);
+	}
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
 	}
 

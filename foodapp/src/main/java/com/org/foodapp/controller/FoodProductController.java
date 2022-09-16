@@ -18,9 +18,9 @@ public class FoodProductController {
 	@Autowired
 	FoodProductService foodProductService;
 	
-	@PostMapping("/foodproduct")
-	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(@RequestBody FoodProduct foodProduct){
-		return foodProductService.savefFoodProduct(foodProduct, 2);
+	@PostMapping("/foodproduct/{menuId}")
+	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(@RequestBody FoodProduct foodProduct, @PathVariable int menuId){
+		return foodProductService.savefFoodProduct(foodProduct, menuId);
 	}
 	@DeleteMapping("/foodproduct/{foodProdId}")
 	public ResponseEntity<ResponseStructure<String>> deleteProduct(@PathVariable int foodProdId){

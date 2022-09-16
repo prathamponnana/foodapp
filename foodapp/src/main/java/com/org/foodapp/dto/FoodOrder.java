@@ -35,7 +35,7 @@ public class FoodOrder {
 	List<Item> items;
 	
 	@JsonBackReference
-	@ManyToOne(cascade =  CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn
 	User user;
 	//Staff

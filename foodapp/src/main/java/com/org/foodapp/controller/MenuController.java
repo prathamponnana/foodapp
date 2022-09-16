@@ -18,12 +18,12 @@ public class MenuController {
 	@Autowired
 	MenuService menuService;
 	
-	@PostMapping("/menu")
-	public ResponseEntity<ResponseStructure<Menu>> saveMenu(@RequestBody Menu menu){
-		return menuService.saveMenu(menu, 2);
+	@PostMapping("/menu/{userId}")
+	public ResponseEntity<ResponseStructure<Menu>> saveMenu(@RequestBody Menu menu, @PathVariable int userId){
+		return menuService.saveMenu(menu, userId);
 	}
 	@DeleteMapping("/menu/{menuId}")
-	public ResponseEntity<ResponseStructure<String>> deleteUser(@PathVariable int menuId){
+	public ResponseEntity<ResponseStructure<String>> deleteMenu(@PathVariable int menuId){
 		return menuService.deleteMenu(menuId);
 	}
 
