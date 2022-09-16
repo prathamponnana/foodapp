@@ -23,20 +23,38 @@ public class MenuService {
 	UserDao userDao;
 	
 	public ResponseEntity<ResponseStructure<Menu>> saveMenu(Menu menu, int id){
-		
 		Optional<User> optional = userDao.getUserById(id);
-		if(optional.isEmpty()) {
-			System.out.println("User Not Found");
+		ResponseStructure<Menu> structure = new ResponseStructure<>();
+
+		Menu menu1 = optional.get().getMenu();
+		if(optional.isEmpty() ) {
+			structure.setError(true);
+			structure.setMessage("No id found");
+		}else if (menu1!=null) {
+			structure.setError(true);
+			structure.setMessage("Hey a manager can have only 1 menu");
 		}
 		else {
-			menu.setUser(optional.get());
+				menu.setUser(optional.get());
+				structure.setError(false);
+				structure.setMessage("Menu saved");
+				structure.setData(menuDao.saveMenu(menu));
 		}
-		ResponseStructure<Menu> structure = new ResponseStructure<>();
-		structure.setError(false);
-		structure.setMessage("Menu saved");
-		structure.setData(menuDao.saveMenu(menu));
-		return new ResponseEntity<ResponseStructure<Menu>> (structure, HttpStatus.OK) ;
-		
+		return new ResponseEntity<ResponseStructure<Menu>> (structure, HttpStatus.OK) ;	
+	}
+	
+	public ResponseEntity<ResponseStructure<String>> deleteMenu(int id){
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		Optional<Menu> optional = menuDao.getMenuById(id);
+		if(optional.isEmpty()) {
+			structure.setError(true);
+			structure.setMessage("No menu with that id");
+		}else {
+			structure.setError(false);
+			structure.setMessage("Menu Deleted");
+			menuDao.deleteMenu(id);
+	}
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
 	}
 
 }

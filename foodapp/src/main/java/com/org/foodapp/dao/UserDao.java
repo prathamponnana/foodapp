@@ -21,6 +21,16 @@ public class UserDao {
 	public Optional<User> getUserById(int id) {
 		return userRepo.findById(id);
 	}
+	public User login(String name, String password) {
+		return userRepo.getByNameAndPassword(name, password);
+	}
+	
+	public User updateUser(User user) {
+		return userRepo.save(user);
+	}
+	public void deleteUser(User user) {
+		 userRepo.delete(user);
+	}
 	
 
 }

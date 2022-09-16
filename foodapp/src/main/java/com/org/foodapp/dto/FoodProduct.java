@@ -22,7 +22,7 @@ public class FoodProduct {
 	private boolean availability;
 	private double price;
 	@JsonBackReference
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn
 	Menu menu;
 	

@@ -11,6 +11,7 @@ import com.org.foodapp.dao.FoodProductDao;
 import com.org.foodapp.dao.MenuDao;
 import com.org.foodapp.dto.FoodProduct;
 import com.org.foodapp.dto.Menu;
+import com.org.foodapp.dto.User;
 import com.org.foodapp.util.ResponseStructure;
 
 @Service
@@ -35,6 +36,22 @@ public class FoodProductService {
 			structure.setData(foodProductDao.saveFoodProduct(foodProduct));
 		}		
 		return new ResponseEntity<ResponseStructure<FoodProduct>>(structure, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructure<String>> deleteFoodProduct(int id){
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		Optional<FoodProduct> optional = foodProductDao.getFoodProductById(id);
+		if(optional.isEmpty()) {
+			structure.setError(true);
+			structure.setMessage("No id found");
+		}
+		else {
+			structure.setError(false);
+			structure.setMessage("Food Product deleted");
+			foodProductDao.deleteFoodProduct(id);
+		}
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
+
 	}
 
 }

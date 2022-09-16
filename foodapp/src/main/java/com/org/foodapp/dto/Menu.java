@@ -24,8 +24,8 @@ public class Menu {
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "menu")
 	List<FoodProduct> foodProducts;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn
+	@OneToOne
+	@JoinColumn(nullable = false, unique=true)
 	User user;
 	//Manager
 
