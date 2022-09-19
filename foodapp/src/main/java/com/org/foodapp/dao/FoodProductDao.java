@@ -1,5 +1,6 @@
 package com.org.foodapp.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class FoodProductDao {
 	
 	public Optional<FoodProduct> getFoodProductById(int id){
 		return foodProductRepo.findById(id);
+	}
+	public List<FoodProduct> getFoodProductsInMenu(int menuId){
+		return foodProductRepo.getFoodProductsInMenu(menuId);
 	}
 	
 	public void deleteFoodProduct(int id) {

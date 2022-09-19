@@ -11,26 +11,26 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class User {
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	private String name;
 	private String email;
 	private String password;
 	private String role;
 	
 	@OneToOne(mappedBy = "user",fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
 	Menu menu;
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonIgnore  // newly added item
 	List<FoodOrder> foodOrders;
 	
 	public int getId() {

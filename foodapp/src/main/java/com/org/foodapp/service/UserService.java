@@ -1,13 +1,16 @@
 package com.org.foodapp.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.org.foodapp.dao.UserDao;
+import com.org.foodapp.dto.Menu;
 import com.org.foodapp.dto.User;
 import com.org.foodapp.util.ResponseStructure;
 
@@ -40,9 +43,17 @@ public class UserService {
 		
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
-	public ResponseEntity<ResponseStructure<User>> login(String name, String password){
+	public ResponseEntity<ResponseStructure<List<User>>> getAllStaffs(){
+		ResponseStructure<List<User>> structure = new ResponseStructure<>();
+			structure.setError(false);
+			structure.setMessage("User Found");
+			structure.setData(userDao.getAllStaffs());
+		
+		return new ResponseEntity<ResponseStructure<List<User>>>(structure, HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<User>> login(String name, String password, String role){
 		ResponseStructure<User> structure = new ResponseStructure<>();
-		User user = userDao.login(name, password);
+		User user = userDao.login(name, password, role);
 		if(user!=null) {
 			structure.setError(false);
 			structure.setMessage("Login Successful");
@@ -55,11 +66,15 @@ public class UserService {
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseStructure<User>> updateUser(User user){
+	public ResponseEntity<ResponseStructure<User>> updateUser(User user){	
 		ResponseStructure<User> structure = new ResponseStructure<>();
+		int existingUserId = user.getId();
+		User existingUser = userDao.getUserById(existingUserId).get();
+		Menu menu = existingUser.getMenu();
+		    user.setMenu(menu);
 			structure.setError(false);
 			structure.setMessage("Updated Successfully");
-			structure.setData(userDao.saveUser(user));
+			structure.setData(userDao.updateUser(user));
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
 	

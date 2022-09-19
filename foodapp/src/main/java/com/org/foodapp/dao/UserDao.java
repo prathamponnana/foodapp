@@ -1,5 +1,6 @@
 package com.org.foodapp.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,13 @@ public class UserDao {
 	public Optional<User> getUserById(int id) {
 		return userRepo.findById(id);
 	}
-	public User login(String name, String password) {
-		return userRepo.getByNameAndPassword(name, password);
+	
+	public List<User> getAllStaffs(){
+		return userRepo.getAllStaffs("Manager");
+	}
+	
+	public User login(String name, String password, String role) {
+		return userRepo.getByNameAndPassword(name, password, role);
 	}
 	
 	public User updateUser(User user) {

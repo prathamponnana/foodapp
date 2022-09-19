@@ -21,6 +21,9 @@ public class MenuDao {
 	public Optional<Menu> getMenuById(int id) {
 		return menuRepository.findById(id);
 	}
+	public Menu getMenuByManagerId(int managerId) {
+		return menuRepository.getMenuByManagerId(managerId);
+	}
 	
 	public void deleteMenu(int menuId) {
 		 menuRepository.deleteById(menuId);

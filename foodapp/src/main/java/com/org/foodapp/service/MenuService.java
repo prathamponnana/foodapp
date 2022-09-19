@@ -43,6 +43,14 @@ public class MenuService {
 		return new ResponseEntity<ResponseStructure<Menu>> (structure, HttpStatus.OK) ;	
 	}
 	
+	public ResponseEntity<ResponseStructure<Menu>> getMenuByManagerId(int managerId){
+		ResponseStructure<Menu> structure = new ResponseStructure<>();
+		structure.setError(false);
+		structure.setMessage("Menu retrived");
+		structure.setData(menuDao.getMenuByManagerId(managerId));		
+		return new ResponseEntity<ResponseStructure<Menu>> (structure, HttpStatus.OK) ;	
+	}
+	
 	public ResponseEntity<ResponseStructure<String>> deleteMenu(int id){
 		ResponseStructure<String> structure = new ResponseStructure<>();
 		Optional<Menu> optional = menuDao.getMenuById(id);

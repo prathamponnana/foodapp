@@ -1,5 +1,6 @@
 package com.org.foodapp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,14 @@ public class FoodProductService {
 			structure.setData(foodProductDao.saveFoodProduct(foodProduct));
 		}		
 		return new ResponseEntity<ResponseStructure<FoodProduct>>(structure, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructure<List<FoodProduct>>> getFoodProductsInMenu(int menuId){
+		ResponseStructure<List<FoodProduct>> structure = new ResponseStructure<>();
+		structure.setError(false);
+		structure.setMessage("food products in menu retrived");
+		structure.setData(foodProductDao.getFoodProductsInMenu(menuId));
+		return new ResponseEntity<ResponseStructure<List<FoodProduct>>>(structure, HttpStatus.OK);
 	}
 	
 	public ResponseEntity<ResponseStructure<String>> deleteFoodProduct(int id){

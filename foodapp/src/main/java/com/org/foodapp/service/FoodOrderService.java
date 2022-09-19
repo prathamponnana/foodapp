@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.org.foodapp.dao.FoodOrderDao;
 import com.org.foodapp.dao.UserDao;
@@ -56,16 +57,34 @@ public class FoodOrderService {
 		}
 		return new ResponseEntity<ResponseStructure<List<FoodOrder>>>(structure, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<ResponseStructure<FoodOrder>> getFoodOrderByItsId(int foodOrderId) {
+		ResponseStructure<FoodOrder> structure = new ResponseStructure<>();
+		Optional<FoodOrder> foodOrderOptional = foodOrderDao.getFoodOrderById(foodOrderId);
+		if(foodOrderOptional.isEmpty()) {
+			structure.setError(true);
+			structure.setMessage("No foodOrder found");
+		}
+		else {
+			structure.setError(false);
+			structure.setMessage("Food Order Retrived");
+			structure.setData(foodOrderOptional.get());
+		}
+		return new ResponseEntity<ResponseStructure<FoodOrder>>(structure, HttpStatus.OK);
+	}
 
 	public ResponseEntity<ResponseStructure<FoodOrder>> updateFoodOrder(FoodOrder foodOrder) {
 		ResponseStructure<FoodOrder> structure = new ResponseStructure<>();
+		FoodOrder foodOrderTobeUpdated = foodOrderDao.getFoodOrderById(foodOrder.getId()).get();
+		User user = foodOrderTobeUpdated.getUser();
+		foodOrder.setUser(user);
 		structure.setError(false);
 		structure.setMessage("Food Order Status Updated");
 		structure.setData(foodOrderDao.updateFoodOrder(foodOrder));
 		
 		return new ResponseEntity<ResponseStructure<FoodOrder>>(structure, HttpStatus.OK);
 	}
-	
+		
 	public ResponseEntity<ResponseStructure<String>> deleteFoodOrderById(int id) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
 		Optional<FoodOrder> optional = foodOrderDao.getFoodOrderById(id);
