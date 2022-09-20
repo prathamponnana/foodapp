@@ -1,0 +1,19 @@
+<div class="container">
+    <section class="mainbox">
+        <form #menuForm="ngForm" (ngSubmit)="onSubmit(menuForm,userId)" class="form-signin">
+            <div class="box1">
+                <img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png" alt="image" height="80px" width="80px">
+                
+                <h1 class="h3 mb-3 font-weight-normal">Create Menu</h1>
+                
+            
+                <label for="inputMenuId" class="sr-only">user Id</label>
+                <input name="userId" #userId="ngModel" ngModel
+                type="text" id="inputMenuId" class="form-control" placeholder="user Id" required>
+
+  
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+  </div>

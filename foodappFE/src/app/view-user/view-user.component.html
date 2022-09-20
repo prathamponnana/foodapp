@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Password</th>
+            <th scope="col">Role</th>
+            <th scope="col">Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of result.data">
+            <td>{{u.id}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.name}}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.role}}</td>
+            <td><button class="btn btn-danger" (click)="deleteUser(u.id)" >Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" routerLink=".." class="btn btn-secondary">Back</button>
+</div>

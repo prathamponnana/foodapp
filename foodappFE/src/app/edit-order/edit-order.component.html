@@ -1,0 +1,24 @@
+
+<div class="container">
+    <h3>Update Orders</h3>
+    <form #editData="ngForm" (ngSubmit)="editOrder(editData)">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Customer Name</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" ngModel id="customerName" name="customerName" #customerName="ngModel" [(ngModel)]="selectedOrder.customerName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Contact Number</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" ngModel id="contactNumber" name="contactNumber" #contactNumber="ngModel" [(ngModel)]="selectedOrder.contactNumber">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Status</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" ngModel id="status" name="status" #status="ngModel" [(ngModel)]="selectedOrder.status">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Price</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" ngModel id="totalPrice" name="totalPrice" #totalPrice="ngModel" [(ngModel)]="selectedOrder.totalPrice">
+        </div>
+        
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+</div>

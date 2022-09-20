@@ -1,0 +1,36 @@
+<div class="container">
+    <section class="mainbox">
+        <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm,userId)" class="form-signin">
+            <div class="box1">
+                <img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png" alt="image" height="80px" width="80px">
+                
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                
+                <label for="inputName" class="sr-only">Name</label>
+                <input name="customerName" #customerName="ngModel" ngModel
+                type="text" id="inputName" class="form-control" placeholder="Customer Name" required autofocus>
+                
+                <label for="inputNumber" class="sr-only">Contact Number</label>
+                <input name="contactNumber" #contactNumber="ngModel" ngModel
+                type="tel" id="inputNumber" class="form-control" placeholder="Contact Number" required autofocus>
+                
+                <label for="inputStatus" class="sr-only">Status</label>
+                <input name="status" #status="ngModel" ngModel
+                type="text" id="inputStatus" class="form-control" placeholder="Status" required>
+                
+                  
+                <label for="inputPrice" class="sr-only">Role</label>
+                <input name="totalPrice" #totalPrice="ngModel" ngModel
+                type="text" id="inputPrice" class="form-control" placeholder="Price" required>
+
+
+                <label for="inputUserId" class="sr-only">userId</label>
+                <input name="userId" #userId="ngModel" ngModel
+                type="text" id="inputUserId" class="form-control" placeholder="User Id" required>
+
+  
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+  </div>

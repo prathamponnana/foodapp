@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Status</th>
+            <th scope="col">Price</th>
+            <th scope="col">UPDATE</th>
+            <th scope="col">DELETE</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of result.data">
+            <td>{{f.id}}</td>
+            <td>{{f.customerName}}</td>
+            <td>{{f.contactNumber}}</td>
+            <td>{{f.status}}</td>
+            <td>{{f.totalPrice}}</td> 
+            <td><button class="btn btn-primary" type="button" [routerLink]="['/edit-order/',f.id]">UPDATE</button></td>
+            <td><button class="btn btn-danger" (click)="deleteOrder(f.id)" >Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" routerLink=".." class="btn btn-secondary">Back</button>
+</div>

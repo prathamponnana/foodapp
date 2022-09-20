@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Availability</th>
+            <th scope="col">Price</th>
+            <th scope="col">Type</th>
+            <th scope="col">Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of result.data">
+            <td>{{f.id}}</td>
+            <td>{{f.name}}</td>
+            <td>{{f.availability}}</td>
+            <td>{{f.price}}</td>
+            <td>{{f.type}}</td>
+            <td><button class="btn btn-danger" (click)="deleteProduct(f.id)">DELETE</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" routerLink=".." class="btn btn-secondary">Back</button>
+</div>
