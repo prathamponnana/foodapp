@@ -1,0 +1,11 @@
+ .container{
+    width: 25%;
+  }
+
+  img{
+    border-radius: 100px;
+  }
+
+  input{
+    margin: 10px auto;
+  }

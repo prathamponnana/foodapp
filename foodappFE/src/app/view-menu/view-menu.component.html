@@ -1,0 +1,15 @@
+<div class="container" style="padding: 10px;">
+    <div style="display: flex; justify-content:space-between;">
+        <button class="btn btn-outline-secondary" (click)="deleteMenu()">Delete Menu</button>
+        <button class="btn btn-outline-secondary" (click)="addToMenu()">Add to Menu</button>
+    </div>
+    <div class="list-group foodproduct" *ngFor = "let f of foodProducts">
+        <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{f.name}}<span><img style="margin-left: 10px;" src="../../assets//icons/vegicon.png" alt="Veg" width="30" height="30"></span></h5>
+                <small (click)="deleteProduct(f.id)"><i class="fa-solid fa-trash"></i> </small>
+            </div>
+            <small> &#8377; {{f.price}}</small>
+        </a>
+    </div>
+</div>

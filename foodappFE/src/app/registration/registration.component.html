@@ -1,0 +1,30 @@
+<div class="container">
+    <section class="mainbox">
+        <form #regForm="ngForm" (ngSubmit)="register(regForm)" class="form-signin">
+            <div class="box1">
+                <img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png" alt="image"
+                    height="80px" width="80px">
+
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                <label for="inputName" class="sr-only">Name</label>
+                <input name="name" #name="ngModel" ngModel type="text" id="inputEmail" class="form-control"
+                    placeholder="Name" required autofocus>
+
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input name="email" #email="ngModel" ngModel type="email" id="inputEmail" class="form-control"
+                    placeholder="Email address" required autofocus>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input name="password" #password="ngModel" ngModel type="password" id="inputPassword"
+                    class="form-control" placeholder="Password" required>
+                    <select class="form-control" name="role" #role="ngModel" ngModel>
+                        <option value="" disabled selected><small>Select role</small></option>
+                        <option selected>Manager</option>
+                        <option>Staff</option>
+                    </select>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </div>
+        </form>
+    </section>
+</div>
