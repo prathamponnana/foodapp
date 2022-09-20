@@ -1,0 +1,29 @@
+<div style="margin: 10% auto;" class="container">
+    <form #addfoodproduct="ngForm" (ngSubmit)="addFoodProduct(addfoodproduct)" class="form-signin">
+      <br>
+      <br>
+      <!-- <img
+        src="https://media.istockphoto.com/photos/most-famous-thai-foods-red-curry-pork-green-curry-pork-chicken-soup-picture-id1161110617?b=1&k=20&m=1161110617&s=170667a&w=0&h=grZQQ1ZjPrLz6BChCWhANL7d3heUvMxfUh4C2KOziiw="
+        alt="" srcset="" height="72" width="80"> -->
+      <h1 class="h3 mb-3 font-weight-normal">Add product to menu</h1>
+      
+      <label for="inputEmail" class="sr-only">Name</label>
+      <input name="name" #name="ngModel" ngModel type="email" id="inputEmail" class="form-control" placeholder="Name" required>
+      <br>
+      <label for="inputPassword" class="sr-only">price</label>
+      <input name="price" #price="ngModel" ngModel type="text" id="inputPassword" class="form-control" placeholder="Price" required>
+      <br>
+      <select class="form-control" name="availability" #availability="ngModel" ngModel>
+        <option value="" disabled selected><small>Choose availability</small></option>
+        <option selected>Available</option>
+      </select>
+      <br>
+      <select class="form-control" name="type" #type="ngModel" ngModel>
+        <option value="" disabled selected><small>Select type</small></option>
+        <option selected>Veg</option>
+        <option>Non-veg</option>
+      </select>
+     <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">ADD PRODUCT</button>
+    </form>
+  </div>
